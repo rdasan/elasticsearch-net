@@ -16,9 +16,9 @@ using static Nest.Infer;
 namespace Tests.XPack.Transform
 {
 	[SkipVersion("<7.8.0", "Settings introduced in 7.8.0")]
-	public class TransformApiWithSettingsTests : ApiIntegrationTestBase<WritableCluster, PreviewTransformResponse<ProjectTransform>, IPreviewTransformRequest, PreviewTransformDescriptor<Project>, PreviewTransformRequest>
+	public class TransformApiWithSettingsTests : ApiIntegrationTestBase<IntrusiveOperationCluster, PreviewTransformResponse<ProjectTransform>, IPreviewTransformRequest, PreviewTransformDescriptor<Project>, PreviewTransformRequest>
 	{
-		public TransformApiWithSettingsTests(WritableCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
+		public TransformApiWithSettingsTests(IntrusiveOperationCluster cluster, EndpointUsage usage) : base(cluster, usage) { }
 
 		protected override LazyResponses ClientUsage() => Calls(
 			(client, f) => client.Transform.Preview<Project, ProjectTransform>(f),
